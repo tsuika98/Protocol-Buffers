@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"google.golang.org/protobuf/proto"
@@ -11,6 +12,10 @@ func main() {
 	p := &Person{
 		Name: "tsuika",
 		Age:  22,
+		SocialMediaFollowers: &SocialMediaFollowers{
+			Youtube: 2500,
+			Twitter: 500,
+		},
 	}
 
 	log.Print("Person before marshal")
@@ -23,6 +28,7 @@ func main() {
 	}
 
 	log.Print("Person after marshalling: ", data)
+	fmt.Println("")
 
 	// unmarshal protocol buffer object into a person type
 	newP := &Person{}
@@ -31,7 +37,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Print("Person after unmarshalling: ", newP)
+	log.Print("Person after unmarshalling")
 	printPersonInfo(p)
 
 }
@@ -40,6 +46,6 @@ func printPersonInfo(person *Person) {
 	// use generated methods in person.pb file to retrieve field names of the person type
 	log.Print("Name: ", person.GetName())
 	log.Print("Age: ", person.GetAge())
-	log.Print("\n")
-
+	log.Print("SocialFollowing: ", person.GetSocialMediaFollowers())
+	fmt.Println("")
 }

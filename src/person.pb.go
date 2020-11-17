@@ -27,8 +27,9 @@ type Person struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Age  int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	Name                 string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age                  int32                 `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	SocialMediaFollowers *SocialMediaFollowers `protobuf:"bytes,3,opt,name=socialMediaFollowers,proto3" json:"socialMediaFollowers,omitempty"`
 }
 
 func (x *Person) Reset() {
@@ -77,15 +78,86 @@ func (x *Person) GetAge() int32 {
 	return 0
 }
 
+func (x *Person) GetSocialMediaFollowers() *SocialMediaFollowers {
+	if x != nil {
+		return x.SocialMediaFollowers
+	}
+	return nil
+}
+
+type SocialMediaFollowers struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Youtube int32 `protobuf:"varint,1,opt,name=youtube,proto3" json:"youtube,omitempty"`
+	Twitter int32 `protobuf:"varint,2,opt,name=twitter,proto3" json:"twitter,omitempty"`
+}
+
+func (x *SocialMediaFollowers) Reset() {
+	*x = SocialMediaFollowers{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_person_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SocialMediaFollowers) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SocialMediaFollowers) ProtoMessage() {}
+
+func (x *SocialMediaFollowers) ProtoReflect() protoreflect.Message {
+	mi := &file_person_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SocialMediaFollowers.ProtoReflect.Descriptor instead.
+func (*SocialMediaFollowers) Descriptor() ([]byte, []int) {
+	return file_person_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *SocialMediaFollowers) GetYoutube() int32 {
+	if x != nil {
+		return x.Youtube
+	}
+	return 0
+}
+
+func (x *SocialMediaFollowers) GetTwitter() int32 {
+	if x != nil {
+		return x.Twitter
+	}
+	return 0
+}
+
 var File_person_proto protoreflect.FileDescriptor
 
 var file_person_proto_rawDesc = []byte{
 	0x0a, 0x0c, 0x70, 0x65, 0x72, 0x73, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04,
-	0x6d, 0x61, 0x69, 0x6e, 0x22, 0x2e, 0x0a, 0x06, 0x50, 0x65, 0x72, 0x73, 0x6f, 0x6e, 0x12, 0x12,
+	0x6d, 0x61, 0x69, 0x6e, 0x22, 0x7e, 0x0a, 0x06, 0x50, 0x65, 0x72, 0x73, 0x6f, 0x6e, 0x12, 0x12,
 	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
 	0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x03, 0x61, 0x67, 0x65, 0x42, 0x06, 0x5a, 0x04, 0x6d, 0x61, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x03, 0x61, 0x67, 0x65, 0x12, 0x4e, 0x0a, 0x14, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x4d, 0x65,
+	0x64, 0x69, 0x61, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x6d, 0x61, 0x69, 0x6e, 0x2e, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c,
+	0x4d, 0x65, 0x64, 0x69, 0x61, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x72, 0x73, 0x52, 0x14,
+	0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x4d, 0x65, 0x64, 0x69, 0x61, 0x46, 0x6f, 0x6c, 0x6c, 0x6f,
+	0x77, 0x65, 0x72, 0x73, 0x22, 0x4a, 0x0a, 0x14, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x4d, 0x65,
+	0x64, 0x69, 0x61, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x72, 0x73, 0x12, 0x18, 0x0a, 0x07,
+	0x79, 0x6f, 0x75, 0x74, 0x75, 0x62, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x79,
+	0x6f, 0x75, 0x74, 0x75, 0x62, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x77, 0x69, 0x74, 0x74, 0x65,
+	0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x77, 0x69, 0x74, 0x74, 0x65, 0x72,
+	0x42, 0x06, 0x5a, 0x04, 0x6d, 0x61, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -100,16 +172,18 @@ func file_person_proto_rawDescGZIP() []byte {
 	return file_person_proto_rawDescData
 }
 
-var file_person_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_person_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_person_proto_goTypes = []interface{}{
-	(*Person)(nil), // 0: main.Person
+	(*Person)(nil),               // 0: main.Person
+	(*SocialMediaFollowers)(nil), // 1: main.SocialMediaFollowers
 }
 var file_person_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: main.Person.socialMediaFollowers:type_name -> main.SocialMediaFollowers
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_person_proto_init() }
@@ -130,6 +204,18 @@ func file_person_proto_init() {
 				return nil
 			}
 		}
+		file_person_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SocialMediaFollowers); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -137,7 +223,7 @@ func file_person_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_person_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

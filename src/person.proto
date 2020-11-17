@@ -9,4 +9,10 @@ option go_package = "main"; // define the go package name the generated code wil
 message Person {
     string name = 1;
     int32 age = 2;
+    SocialMediaFollowers socialMediaFollowers = 3;
+}
+
+message SocialMediaFollowers {
+    int32 youtube = 1;
+    int32 twitter = 2;
 }
