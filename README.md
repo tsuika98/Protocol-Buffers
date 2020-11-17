@@ -1,4 +1,4 @@
 # Protocol-Buffers
-Learning how protocol buffers work 
+Simple example showcasing how protocol buffers can be used to define messages and used in a simple go app. 
 
-compile proto files protoc --go_out=. *.proto
+compilation: src> protoc --go_out=. *.proto
