@@ -1,0 +1,12 @@
+syntax="proto3";
+
+package main;
+
+option go_package = "main"; // define the go package name the generated code will go into
+
+// define the person message
+// protoc compilier can turn this into Go code with useful methods for working with this type
+message Person {
+    string name = 1;
+    int32 age = 2;
+}
